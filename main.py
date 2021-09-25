@@ -16,8 +16,8 @@ try:
         int(input("enter maturity: ")),
         Purpose[input("enter purpose MORTGAGE, BUSINESS, CAR or CONSUMER: ")])
     request.validation()
-    requested_amount = request.annual_payment()
-    print('requested amount', requested_amount)
+    anp = request.annual_payment()
+    print('annual payment: ', anp)
 except ValidationError as err:
     print('validation', err)
     sys.exit(0)

@@ -93,7 +93,8 @@ class Input:
             raise ValidationError("loan cannot be issues since annual payment is more than half of the year income")
 
     def annual_payment(self):
-        return annual_payment(self.min_requested_amount(), self.maturity, self.calculate_modifier())
+        anp = annual_payment(self.min_requested_amount(), self.maturity, self.calculate_modifier())
+        return anp
 
     def min_requested_amount(self):
         csra = credit_score.max_requested_amount(self.credit_score)
@@ -113,6 +114,7 @@ class Input:
 
     # Calculate sum of modifiers for annual loan payment
     def calculate_modifier(self):
-        return Config.ANNUAL_PAYMENT_BASE_RATE + income_source.modifier(self.income_source)
+        cm = Config.ANNUAL_PAYMENT_BASE_RATE + income_source.modifier(self.income_source)
         + purpose.modifier(self.purpose) + credit_score.modifier(self.credit_score)
         + requested_amount.modifier(self.requested_amount)
+        return cm

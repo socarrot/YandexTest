@@ -61,6 +61,8 @@ class TestInput(unittest.TestCase):
         cases = [
             (input.Input(18, Gender.F, IncomeSource.OWNER, 150000, 0, 100000, 5, Purpose.BUSINESS), 130250.0),
             (input.Input(65, Gender.F, IncomeSource.PASSIVE, 500000, 1, 1000000, 15, Purpose.CONSUMER), 1171666.6666666667),
+            (input.Input(19, Gender.M, IncomeSource.PASSIVE, 10000000, 0, 1231231, 10, Purpose.CAR),
+             1205000.0),
         ]
 
         for row in cases:

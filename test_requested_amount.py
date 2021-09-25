@@ -7,7 +7,8 @@ class TestRequestedAmount(unittest.TestCase):
         cases = [
             (-100000.0, 0),
             (0.0, 0),
-            (100000.0, 5)
+            (100000.0, -5),
+            (1231231.0, -6.090339541650786)
         ]
 
         for row in cases:
