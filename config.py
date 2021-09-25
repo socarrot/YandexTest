@@ -1,0 +1,20 @@
+# Define a config file
+from income_source import IncomeSource
+
+
+# Define configuration file with limitations
+class Config:
+    AGE_MIN = 18
+    AGE_MALE_MAX = 65
+    AGE_FEMALE_MAX = 60
+    CREDIT_SCORE_MIN = -2
+    CREDIT_SCORE_MAX = 2
+    REQUESTED_AMOUNT_MIN = 100000
+    REQUESTED_AMOUNT_MAX = 10000000
+    MATURITY_MIN = 1
+    MATURITY_MAX = 20
+    FORBIDDEN_INCOME_SOURCE = [IncomeSource.UNEMPLOYED]
+    LOAN_PASSIVE_INCOME_SOURCE_MAX = 1000000
+    LOAN_HIRED_INCOME_SOURCE_MAX = 5000000
+    LOAN_OWNER_INCOME_SOURCE_MAX = 10000000
+    ANNUAL_PAYMENT_BASE_RATE = 10
