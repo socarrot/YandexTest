@@ -5,8 +5,6 @@ from gender import Gender
 from income_source import IncomeSource
 from purpose import Purpose
 
-
-# TODO: get data
 try:
     request = Input(
         int(input("enter age: ")),
@@ -16,7 +14,7 @@ try:
         int(input("enter credit score -2..2: ")),
         int(input("enter requested amount: ")),
         int(input("enter maturity: ")),
-        Purpose[input("enter purpose : ")])
+        Purpose[input("enter purpose MORTGAGE, BUSINESS, CAR or CONSUMER: ")])
     request.validation()
     requested_amount = request.annual_payment()
     print('requested amount', requested_amount)
