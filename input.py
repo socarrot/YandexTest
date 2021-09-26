@@ -10,13 +10,12 @@ import credit_score
 import requested_amount
 
 
-def percentage(n: int, per: int):
-    return n / 100 * float(per)
-
 # Calculate annual credit payment
 def annual_payment(requested_amount: int, maturity: int, annual_payment_base_rate: int):
     # (<сумма кредита> * (1 + <срок погашения> * (<базовая ставка> + <модификаторы>))) / <срок погашения>
-    return (requested_amount * (1 + maturity + percentage(maturity, annual_payment_base_rate))) / maturity
+    pr = 1 + (maturity * (annual_payment_base_rate / 100))
+    ap = (requested_amount * pr) / maturity
+    return int(ap)
 
 
 class Input:
@@ -52,6 +51,10 @@ class Input:
         # Validate income source for loan request
         if self.income_source == IncomeSource.UNEMPLOYED:
             raise ValidationError("not possible to issue a loan if", Config.FORBIDDEN_INCOME_SOURCE)
+
+        # Validate year income for loan request
+        if self.year_income < 0:
+            raise ValidationError("year income value can't be negative")
 
         # Validate credit score for loan request
         if self.credit_score <= Config.CREDIT_SCORE_MIN:
@@ -114,7 +117,10 @@ class Input:
 
     # Calculate sum of modifiers for annual loan payment
     def calculate_modifier(self):
-        cm = Config.ANNUAL_PAYMENT_BASE_RATE + income_source.modifier(self.income_source)
-        + purpose.modifier(self.purpose) + credit_score.modifier(self.credit_score)
-        + requested_amount.modifier(self.requested_amount)
+        insrc = income_source.modifier(self.income_source)
+        purp = purpose.modifier(self.purpose)
+        cs = credit_score.modifier(self.credit_score)
+        reqam = requested_amount.modifier(self.requested_amount)
+
+        cm = Config.ANNUAL_PAYMENT_BASE_RATE + insrc + purp + cs + reqam
         return cm
