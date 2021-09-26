@@ -5,6 +5,7 @@ from gender import Gender
 from income_source import IncomeSource
 from purpose import Purpose
 
+# Input fields for checking the issuing loan conditions and calculating annual payment
 try:
     request = Input(
         int(input("enter age: ")),

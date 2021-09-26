@@ -1,6 +1,4 @@
-# Define a modifier for credit score selection
-
-
+# Define a base rate modifier for credit score selection
 def modifier(key: int):
     try:
         return {
@@ -13,6 +11,8 @@ def modifier(key: int):
     except KeyError as e:
         return 0
 
+
+# Define MAX allowable loan amount depending on the credit score
 def max_requested_amount(key: int):
     try:
         return {

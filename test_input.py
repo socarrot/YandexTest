@@ -7,7 +7,7 @@ from purpose import Purpose
 from config import Config
 from validation import ValidationError
 
-
+# Tests for input field variations
 class TestInput(unittest.TestCase):
     def test_invalid(self):
         cases = [
@@ -41,7 +41,7 @@ class TestInput(unittest.TestCase):
         for row in cases:
             self.assertEqual(row[0].calculate_modifier(), row[1])
 
-    # Use the same values as we use in the google sheets table
+    # Use the same values for testing as we use in the google sheets table
     def test_annual_payment(self):
         cases = [
             (input.Input(17, Gender.M, IncomeSource.UNEMPLOYED, 0, -2, 100000, 1, Purpose.CONSUMER), 0),

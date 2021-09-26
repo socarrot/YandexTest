@@ -2,6 +2,7 @@ import unittest
 
 import requested_amount as ra
 
+# Tests for requested amounts
 class TestRequestedAmount(unittest.TestCase):
     def test_modifier(self):
         cases = [

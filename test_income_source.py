@@ -2,7 +2,7 @@ import unittest
 
 import income_source
 
-
+# Test income source variations
 class TestIncomeSource(unittest.TestCase):
     def test_modifier_ok(self):
         got = income_source.modifier(income_source.IncomeSource.PASSIVE)

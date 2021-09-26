@@ -17,7 +17,7 @@ def annual_payment(requested_amount: int, maturity: int, annual_payment_base_rat
     ap = (requested_amount * pr) / maturity
     return int(ap)
 
-
+# Create class Input
 class Input:
     def __init__(self,
                  age: int,
@@ -37,6 +37,7 @@ class Input:
         self.maturity = maturity
         self.purpose = purp
 
+    # Create input field validations
     def validation(self):
         # Validate MIN age for loan request
         if self.age < Config.AGE_MIN:
@@ -99,6 +100,7 @@ class Input:
         anp = annual_payment(self.min_requested_amount(), self.maturity, self.calculate_modifier())
         return anp
 
+    # If there are several conditions for the loan amount, the smallest loan amount is selected
     def min_requested_amount(self):
         csra = credit_score.max_requested_amount(self.credit_score)
         ra = self.requested_amount

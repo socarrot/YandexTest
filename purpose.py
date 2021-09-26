@@ -8,7 +8,7 @@ class Purpose(Enum):
     CAR = 3
     CONSUMER = 4
 
-
+# Define a base rate modifier for credit purpose selection
 def modifier(key: Purpose):
     try:
         return {

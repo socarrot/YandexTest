@@ -1,4 +1,4 @@
-# Define a modifier for requested amount
+# Define a base rate modifier for requested loan amount
 import math
 
 

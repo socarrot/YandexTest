@@ -9,6 +9,7 @@ class IncomeSource(Enum):
     UNEMPLOYED = 4
 
 
+# Define a base rate modifier for income source selection
 def modifier(key: IncomeSource):
     try:
         return {
@@ -20,6 +21,7 @@ def modifier(key: IncomeSource):
     except KeyError as e:
         return 0
 
+# Define MAX allowable loan amount depending on the income source
 def max_requested_amount(key: IncomeSource):
     try:
         return {
